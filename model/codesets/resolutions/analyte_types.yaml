@@ -1,0 +1,11 @@
+id: https://ccdh.cancer.gov/codesets/analyte_types
+name: analyte_types
+description: Set of codes that represent the kinds of molecular specimen analyte.
+
+imports:
+  - prefixes
+
+default_prefix: CCDH
+
+members:
+  ...

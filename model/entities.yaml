@@ -17,6 +17,23 @@ slots:
     multivalued: false
     required: true
     key: true
+
+enums:
+  analyte_type_enum:
+    description: Enumerated values that repre
+    code_set: CCDH:analyte_types
+    pv_formula: FHIR_CODING
+  specimen_type_enum:
+    description: |-
+      The high-level type of the specimen, based on its how it has
+      been derived from the original extracted sample.
+    permissible_values:
+      initial_sample: Initial Sample
+      portion: Portion
+      aliquot: Aliquot
+      analyte: Analyte
+      pool: Pool
+    
 classes:
   Entity:
     description: Any resource that has its own identifier
@@ -42,29 +59,17 @@ classes:
         range: Identifier
         multivalued: true
         required: false
+      analyte_type:
+        range: analyte_type_enum
+        multivalued: false
+        required: false
       associated_project:
         description: The Project associated with the specimen.
         range: Project
         multivalued: false
         required: false
       specimen_type:
-        description: "The high-level type of the specimen, based on its how it has\
-          \ been derived from the original extracted sample. \n"
-        comments:
-        - 'Example values: Initial Sample; Portion; Aliquot; Analyte, Pool'
-        values_from: https://example.org/ccdh/valuesets/CDM/Specimen/specimen_type
-        range: CodeableConcept
-        multivalued: false
-        required: false
-      analyte_type:
-        description: When the specimen is of type 'analyte' or 'aliquot', this is
-          the type of substance the analyte represents (e.g. DNA, RNA)
-        comments:
-        - 'Example values: DNA; FFPE DNA; GenomePlex (Rubicon) Amplified DNA; Repli-G
-          (Qiagen) DNA; '
-        - RNA; FFPE RNA
-        values_from: https://example.org/ccdh/valuesets/CDM/Specimen/analyte_type
-        range: CodeableConcept
+        range: specimen_type_enum
         multivalued: false
         required: false
       derived_from_specimen:
