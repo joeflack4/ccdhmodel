@@ -7,5 +7,10 @@ verify_ssl = true
 [packages]
 pydantic = {extras = ["dotenv"], version = "*"}
 pygsheets = "*"
-linkml = {editable = true, git = "https://github.com/linkml/linkml.git"}
+linkml = ">=0.1.1.dev1"
 black = "==v21.5b1"
+linkml-model = ">=0.1.1.dev1"
+linkml-runtime = ">=1.0.5"
+
+[pipenv]
+allow_prereleases = true

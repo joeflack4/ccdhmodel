@@ -9,7 +9,7 @@ import logging
 import logging.config
 from sheet2linkml import config
 from sheet2linkml.source.gsheetmodel.gsheetmodel import GSheetModel
-from linkml.utils import yamlutils
+from linkml_runtime.utils import yamlutils
 import click
 
 
