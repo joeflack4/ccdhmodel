@@ -108,11 +108,6 @@ type CDM.Specimen
     relatedDocument?RelatedReport?: [String]
     relatedSpecimen: [String]
     derivedProduct: [String]
-    qualificationStatusFlag: String
-    referenceStatusFlag: String
-    matchedNormalFlag: [String]
-    selectedNormalFlag: String
-    pairedSpecimenGenotypeMatchFlag: String
     sectionLocation: String
   }
 

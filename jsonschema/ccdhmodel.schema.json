@@ -397,17 +397,6 @@
                },
                "type": "array"
             },
-            "matched_normal_flag": {
-               "description": "A flag indicating that there is no matched normal aliquot for this case that can be used for variant calling purposes.",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "paired_specimen_genotype_match_flag": {
-               "description": "A flag to indicate whether the genotype of the paired normal or tumor specimen matches, or if the data is not available.",
-               "type": "string"
-            },
             "parent_specimen": {
                "description": "An existing specimen from which the specimen of interest was directly derived (i.e its immediate parent specimen).",
                "items": {
@@ -426,10 +415,6 @@
                "description": "The organization/center that provided the specimen.",
                "type": "string"
             },
-            "qualification_status_flag": {
-               "description": "A flag indicating whether the specimen is qualified or disqualified for data analysis in a study.",
-               "type": "string"
-            },
             "quality_measure": {
                "description": "An observation about  specimen characteristics indicative of its quality or suitability for use.",
                "items": {
@@ -443,10 +428,6 @@
                   "type": "string"
                },
                "type": "array"
-            },
-            "reference_status_flag": {
-               "description": "A flag indicating whether the specimen is used as a reference during analytical interrogation",
-               "type": "string"
             },
             "related_diagnosis": {
                "description": "A patient diagnosis that was informed by a pathological assessment of the specimen",
@@ -471,10 +452,6 @@
             },
             "section_location": {
                "description": "The location in a parent specimen from which a section/portion was excised (e.g. top, middle, bottom)",
-               "type": "string"
-            },
-            "selected_normal_flag": {
-               "description": "A flag to denote which 'normal' aliquot the submitter prefers to use for variant calling. Only one normal per experimental strategy per case can be selected.",
                "type": "string"
             },
             "source_material_type": {

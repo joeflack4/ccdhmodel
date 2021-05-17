@@ -9,29 +9,29 @@
     rdfs:label "CRDC-H" ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     skos:editorialNote "derived from [CDM_Dictionary_v1 (Active)](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4)" ;
-    linkml:generation_date "2021-05-13 18:22" ;
+    linkml:generation_date "2021-05-17 13:30" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "ccdhmodel.yaml" ;
-    linkml:source_file_date "Thu May 13 18:21:44 2021" ;
-    linkml:source_file_size 84400 .
+    linkml:source_file_date "Mon May 17 13:30:04 2021" ;
+    linkml:source_file_size 79202 .
 
 <https://example.org/ccdh/CDM.BiologicallyDerivedProduct> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "CDM.BiologicallyDerivedProduct" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:passage_number ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:description ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:product_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:passage_number ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty linkml:growth_rate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -51,25 +51,25 @@ We interpret the growth_rate and passage_number properties in the ADM as describ
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:related_patient ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty linkml:alcohol_use ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:environmental ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:tobacco_use ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:identifier ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:environmental ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:related_patient ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:id ;
-            owl:qualifiedCardinality 1 ] ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:identifier ] ;
     skos:definition "Contact between an agent and a target. A state of contact or close proximity to a medicinal product, chemical, pathogen, radioisotope or other substance." ;
     skos:editorialNote "Derived from [CDM.Exposure in sheet Exposure](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4/edit#gid=1402410931)",
         """Mappings:
@@ -79,24 +79,24 @@ ADM:Exposure""" .
         linkml:ClassDefinition ;
     rdfs:label "CDM.Organization" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:alias ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:name ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:identifier ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:organization_type ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:identifier ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:alias ] ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "A grouping of people or organizations with a common purpose such as a data coordinating center, an university, or an institute within a university" ;
     skos:editorialNote "Derived from [CDM.Organization in sheet Organization](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4/edit#gid=1477577710)",
         """Mappings: 
@@ -109,12 +109,15 @@ BRIDG:Organization
         linkml:ClassDefinition ;
     rdfs:label "CDM.Patient" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:given_name ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:adverse_events ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty linkml:identifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:given_name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -122,10 +125,7 @@ BRIDG:Organization
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:adverse_events ] ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "Demographics and other administrative information about an individual or animal receiving care or other health-related services." ;
     skos:editorialNote "Derived from [CDM.Patient in sheet Patient](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4/edit#gid=1651956379)" .
 
@@ -142,48 +142,12 @@ BRIDG:Organization
         linkml:ClassDefinition ;
     rdfs:label "CDM.ResearchProject" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:research_project_type ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:url ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:id ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:date_started ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:primary_anatomic_site ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:part_of ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:date_ended ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:sponsor ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:date_iacuc_approval ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:identifier ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:name_shortened ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:description ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:part_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -191,7 +155,43 @@ BRIDG:Organization
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:description_shortened ] ;
+            owl:onProperty linkml:description ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:research_project_type ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:date_started ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:sponsor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:primary_anatomic_site ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:url ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:description_shortened ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:identifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:date_iacuc_approval ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:date_ended ] ;
     skos:definition """A process where a researcher or organization plans and then executes a series of steps intended to increase the field of healthcare-related knowledge. 
 This includes studies of safety, efficacy, comparative effectiveness and other information about medications, devices, therapies and other interventional 
 and investigative techniques. A ResearchProject involves the gathering of information about human or animal subjects.""" ;
@@ -207,46 +207,6 @@ MHB: Meant to cover just GDC/PDC/ICDC.Program and GDC/PDC.Project, correct? Not 
         linkml:ClassDefinition ;
     rdfs:label "CDM.ResearchSubject" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:member_of_cohort ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:id ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:member_of_study ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:identifier ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:primary_disease_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:primary_disease_site ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:description ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:reference_status_flag ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:associated_patient ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:qualification_status_flag ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:associated_project ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:processed_at ],
@@ -256,11 +216,51 @@ MHB: Meant to cover just GDC/PDC/ICDC.Program and GDC/PDC.Project, correct? Not 
             owl:onProperty linkml:originating_site ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:associated_project ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:member_of_study ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:primary_disease_site ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:identifier ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:description ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:associated_patient ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:member_of_cohort ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:reference_status_flag ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:primary_disease_type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:index_timepoint ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty linkml:study_progress ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:index_timepoint ] ;
+            owl:onProperty linkml:qualification_status_flag ] ;
     skos:definition """A research subject is the entity of interest in a research study, typically a human being or an animal, but can also be a device, group of humans or animals, 
 or a tissue sample. Human research subjects are usually not traceable to a particular person to protect the subject’s privacy.""" ;
     skos:editorialNote "Derived from [CDM.ResearchSubject in sheet ResearchSubject](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4/edit#gid=665511119)",
@@ -273,19 +273,92 @@ BRIDG: Subject""" .
         linkml:ClassDefinition ;
     rdfs:label "CDM.Specimen" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:cellular_composition_measure ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:specimen_type ],
+            owl:onProperty linkml:cellular_composition_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:identifier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:related_diagnosis ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty linkml:processing_activity ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
+            owl:onProperty linkml:contained_in ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://w3id.org/linkml/related_document?_related_report?> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:source_material_type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:condition_status_at_collection ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:storage_activity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:associated_project ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:general_tissue_morphology ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
             owl:onProperty linkml:source_model_system ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:derived_product ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:provided_by ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty linkml:quality_measure ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:tissue_composition_measure ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:dimensional_measure ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:analyte_type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:creation_activity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:quantity_measure ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:specimen_type ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -295,111 +368,19 @@ BRIDG: Subject""" .
             owl:onClass linkml:String ;
             owl:onProperty linkml:source_patient ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:matched_normal_flag ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:cellular_composition_measure ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:condition_status_at_collection ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:analyte_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:cellular_composition_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:reference_status_flag ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:source_material_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:quantity_measure ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:tissue_composition_measure ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:selected_normal_flag ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:storage_activity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:identifier ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:general_tissue_morphology ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:provided_by ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:related_specimen ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:specific_tissue_morphology ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:associated_project ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:contained_in ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:creation_activity ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty linkml:section_location ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:derived_product ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:related_diagnosis ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:description ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:dimensional_measure ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://w3id.org/linkml/related_document?_related_report?> ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty linkml:parent_specimen ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:qualification_status_flag ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:paired_specimen_genotype_match_flag ] ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:related_specimen ] ;
     skos:definition "Any material taken as a sample from a biological entity (living or dead), or from a physical object or the environment. Specimens are usually collected as an example of their kind, often for use in some investigation. " ;
     skos:editorialNote "Derived from [CDM.Specimen in sheet Specimen](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4/edit#gid=1439310281)" ;
     skos:note "Definition adapted from FHIR.Specimen." .
@@ -419,10 +400,10 @@ BRIDG: Subject""" .
             owl:onProperty linkml:parent_container ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:container_number ],
+            owl:onProperty linkml:container_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:container_type ] ;
+            owl:onProperty linkml:container_number ] ;
     skos:editorialNote "Derived from [CDM.SpecimenContainer in sheet SpecimenContainer](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4/edit#gid=729222697)" .
 
 <https://example.org/ccdh/CDM.SpecimenCreationActivity> a owl:Class,
@@ -431,29 +412,10 @@ BRIDG: Subject""" .
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:collection_site ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty linkml:method_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:input_specimen ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:relative_timing ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:relative_order ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:date_ended ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:performed_by ],
+            owl:onProperty linkml:execution_condition ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -461,22 +423,41 @@ BRIDG: Subject""" .
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
+            owl:onProperty linkml:date_started ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
             owl:onProperty linkml:activity_type ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:collected_during_visit ],
+            owl:onProperty linkml:relative_order ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:date_started ],
+            owl:onProperty linkml:performed_by ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:quantity_collected ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:collection_site ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:collected_during_visit ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:execution_condition ] ;
+            owl:onProperty linkml:input_specimen ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:date_ended ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:relative_timing ] ;
     skos:definition "The process of creating a specimen through observing and/or removing material from an biological source or natural setting (e.g. from a person, animal, cell line, or environmental material), or through derivation from an existing specimen (e.g. through portioning or aliquoting). This activity represents the entire process up to the point where the specimen is physically modified, stored, or transported." ;
     skos:editorialNote "Derived from [CDM.SpecimenCreationActivity in sheet SpecimenCreation](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4/edit#gid=693792130)",
         """Mappings: ADM: n/a
@@ -493,12 +474,12 @@ MHB: for define just a single concrete SpecimenCreationActivity class.  Later we
         linkml:ClassDefinition ;
     rdfs:label "CDM.SpecimenProcessingActivity" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:duration ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:performed_by ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:duration ] ;
+            owl:onProperty linkml:performed_by ] ;
     skos:editorialNote "Derived from [CDM.SpecimenProcessingActivity in sheet SpecimenTransport](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4/edit#gid=359352096)" .
 
 <https://example.org/ccdh/CDM.SpecimenStorageActivity> a owl:Class,
@@ -522,6 +503,13 @@ There are only a few properties in the ADM so related to containment, that conce
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
+            owl:onProperty linkml:date_started ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:execution_conditions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
             owl:onProperty linkml:transport_destination ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -530,14 +518,7 @@ There are only a few properties in the ADM so related to containment, that conce
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:date_started ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:execution_conditions ] ;
+            owl:onProperty linkml:id ] ;
     skos:definition "An activity through which a specimen is transported between locations." ;
     skos:editorialNote "Derived from [CDM.SpecimenTransportActivity in sheet SpecimenTransport](https://docs.google.com/spreadsheets/d/1oWS7cao-fgz2MKWtyr8h2dEL9unX__0bJrWKv6mQmM4/edit#gid=359352096)",
         """Mappings:
@@ -1222,7 +1203,8 @@ linkml:cDM.SpecimenCreationActivity__collected_during_visit a owl:ObjectProperty
     rdfs:range linkml:String ;
     skos:definition "A specific visit during which the specimen was collected." ;
     skos:editorialNote "Cardinality: 0..1",
-        "MHB: Consider if we could make this a mroe generic/re-usable property like 'partOf', or 'performedDuring'" ;
+        """MHB: Consider if we could make this a mroe generic/re-usable property like 'partOf', or 'performedDuring'
+MHB: or, consider lumping during_visit with relative_timing - and creating a datatype here that can include a type value referencing a instance (e.g. an instance of a visit), or a coding.""" ;
     skos:note "*Modeling of 'Visit' is not in scope for this phase, but is a likely entity that will be added in the next phase of work.  " .
 
 linkml:cDM.SpecimenCreationActivity__collection_site a owl:ObjectProperty,
@@ -1285,7 +1267,8 @@ linkml:cDM.SpecimenCreationActivity__method_type a owl:ObjectProperty,
     rdfs:range linkml:String ;
     skos:definition "A specific type of method followed in performing the creation activity. " ;
     skos:editorialNote "Cardinality: 0..1",
-        "MHB: Consider cardinality on this field . . . if the Activity here represents the entire creation process, which may involve many sub-activities and apply many methods, should cardinality be 0..m?" ;
+        """MHB: Consider cardinality on this field . . . if the Activity here represents the entire creation process, which may involve many sub-activities and apply many methods, should cardinality be 0..m?
+MHB: HTAN now has additional fields to capture methods used in deriving new specimens from a parent specimen - e.g. Method of Nucleic Acid Isolation (creation of an analyte), slicing method (creation of a portion?). Need richer model here -  separate fields?  or complex data type for capturing method type where we can incude the subcategory of method?""" ;
     skos:note "This attribute specifically captures the method of collection from the original source in the case of the original/upstream specimen (Specimen.category = 'original'), or the method of derivation from an existing specimen in the case of a derived specimen (Specimen.category = 'portion', 'aliquot', 'analyte')." .
 
 linkml:cDM.SpecimenCreationActivity__performed_by a owl:ObjectProperty,
@@ -1520,21 +1503,6 @@ SE: the "id" is really implementation dependent thing. In REST/FHIR it's the res
     skos:note """
 FHIR naming conventions are followed here, where 'id' is used for logical identifiers, and 'identifier' for business identifiers.  The complex 'Identifier' data type is used  to capture the identifier itself, along with metadata about the source of the business identifier.  Typically, identifiers are used to connect content in resources to external content available in other frameworks or protocols.""" .
 
-linkml:cDM.Specimen__matched_normal_flag a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "cDM.Specimen__matched_normal_flag" ;
-    rdfs:range linkml:String ;
-    skos:definition "A flag indicating that there is no matched normal aliquot for this case that can be used for variant calling purposes." ;
-    skos:editorialNote "Cardinality: 0..m" ;
-    skos:note "This attribute comes from GDC, where it is specific to 'aliquot' specimens. If we leave this as a separate attribute with an enum data type, values will have to indicate whether the variant calling strategy is for targeted, whole genome, or exome sequencing (e.g. \"no matched normal wgs\"). But as noted above we may ultimately group with with other 'flag'-like attributes into a common structure, where we can deal with this issue. " .
-
-linkml:cDM.Specimen__paired_specimen_genotype_match_flag a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "cDM.Specimen__paired_specimen_genotype_match_flag" ;
-    rdfs:range linkml:String ;
-    skos:definition "A flag to indicate whether the genotype of the paired normal or tumor specimen matches, or if the data is not available." ;
-    skos:editorialNote "Cardinality: 0..1" .
-
 linkml:cDM.Specimen__parent_specimen a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "cDM.Specimen__parent_specimen" ;
@@ -1563,21 +1531,6 @@ linkml:cDM.Specimen__provided_by a owl:ObjectProperty,
     skos:editorialNote "Cardinality: 0..1",
         "MHB: This mapping raises a general modeling question about how specific we want be w.r.t. attribute semantics. Here we could define a very specific property such as 'specimen_source_center' that can be used only to link a Specimen to a Center that provided it.  But we chose a more generic proeprty 'provided_by' that might be used in other settings to link any resource to an Agent/Org that provided it.  Is there a general guiding principle we can define when faced with such decisions about the specificity of attribute semantics?" .
 
-linkml:cDM.Specimen__qualification_status_flag a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "cDM.Specimen__qualification_status_flag" ;
-    rdfs:range linkml:String ;
-    skos:definition "A flag indicating whether the specimen is qualified or disqualified for data analysis in a study." ;
-    skos:editorialNote "Cardinality: 0..1",
-        """MHB: I chose here to name the attribute more specifically than in the ADM, to be clearer about its intended meaning.  We can generalize if other types of statuses become relevant to hang from a specimen. 
-
-BTF: There is a similar attribute in ADM.Case which i refactored as 'qualification_status' which isn't a great name.  'Eligibility' for a research subject means something very specific and so I don't think i'd want to name the 'qualifed' / 'disqualified' status for that entity as 'eligibility_status'
-
-SE: this is really a relational status. In other words, the specimen is disqualified in a study, not just disqualified on its own. So, if we want to accomodate a database that will eventually have entries where the same specimen is used in more than one study but still be able to capture which study disqualifies it and why, we'll need to make this a "qualified relationship"
-
-MHB: Agreed. I think the context of the present associated study is implied here (and it was clarified that a given specimen is only associated with one study in th GDC/PDC/ICDC). But we should address this in the next phase. """ ;
-    skos:note "This is the first of several 'flag' type properties we define to capture admistrative or experimental roles/status associated with a specimen.  We may ultimately define a container strucutre to accommodate all flags, where the meaning of the flag is captured in the data (as values of a single 'flag_type' attribute) instead of in the model (as separate attributes for each type of flag)" .
-
 linkml:cDM.Specimen__quality_measure a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "cDM.Specimen__quality_measure" ;
@@ -1597,18 +1550,6 @@ linkml:cDM.Specimen__quantity_measure a owl:ObjectProperty,
     skos:definition "An observation related to the current quantity of a specimen or analyte it contains - e.g. its weight, volume, or concentration. " ;
     skos:editorialNote "Cardinality: 0..m",
         "MHB: Would this model allow us to declare the volume of an analyte solution, and the concentration of the analyte it contains? I think yes - we would create two QuantityMeasure objects - one of type \"volume\" and one of type \"analyte_concentration\"" .
-
-linkml:cDM.Specimen__reference_status_flag a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "cDM.Specimen__reference_status_flag" ;
-    rdfs:range linkml:String ;
-    skos:definition "A flag indicating whether the specimen is used as a reference during analytical interrogation" ;
-    skos:editorialNote "Cardinality: 0..1",
-        """MHB: Not sure about how I modeled this one.  Also, consider collapsing with 'eliqibility_flag' , and any other status/role related elements, into a single property with a  generic data type that can capture any type of status or role.
-
-BTF: as with 'status' above, there is a similar attribute in ADM.Case which i left named 'is_reference' for lack of imagination.
-
-SE: same thought as above but probably too much change to consider for this cycle. This field and similar ones are really not an attribute of a single entity. It's a "relational fact" that involves multiple entity instances and the fact itself holds some attributes. Saying this in plain English makes this clear. For example, this can be worded as "Study x uses specimen y and uses specimen z as a reference". So one option is to figure out how to reduce this to a simple property and this is doable if we put more meaning on the instance of x and y. If we say that we'll have an instance of y for every study the real thing behind y (the real world specimen), i.e. y stands for the role of the real specimen in the specific study, then we can have a simle property on that instance to say it is a reference because that property is specific to y's role in that study, not the real y entity in the world. We haven't talked much about the meaning of the instances of our entities, i.e. when should they be instantiated and what does the instance stand for in the data, so it's hard to decide on how to model attriburtes. Just thinking out loud here but some of our difficulties are due to not also thinking at the instance level.""" .
 
 linkml:cDM.Specimen__related_diagnosis a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -1650,14 +1591,6 @@ linkml:cDM.Specimen__section_location a owl:ObjectProperty,
 
 Note also that i dont think this is an enumerated field in the GDC model . . .but it likely should be?""" ;
     skos:note "This attribute applies only to Specmiens that are of type 'portion' or 'slide'." .
-
-linkml:cDM.Specimen__selected_normal_flag a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "cDM.Specimen__selected_normal_flag" ;
-    rdfs:range linkml:String ;
-    skos:definition "A flag to denote which 'normal' aliquot the submitter prefers to use for variant calling. Only one normal per experimental strategy per case can be selected." ;
-    skos:editorialNote "Cardinality: 0..1" ;
-    skos:note "Same comment/issue as for matched_normal_flag above" .
 
 linkml:cDM.Specimen__source_material_type a owl:ObjectProperty,
         linkml:SlotDefinition ;

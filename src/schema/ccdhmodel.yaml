@@ -515,106 +515,6 @@ classes:
           entity?'
         multivalued: true
         required: false
-      qualification_status_flag:
-        name: qualification_status_flag
-        description: A flag indicating whether the specimen is qualified or disqualified
-          for data analysis in a study.
-        notes:
-        - "MHB: I chose here to name the attribute more specifically than in the ADM,\
-          \ to be clearer about its intended meaning.  We can generalize if other\
-          \ types of statuses become relevant to hang from a specimen. \n\nBTF: There\
-          \ is a similar attribute in ADM.Case which i refactored as 'qualification_status'\
-          \ which isn't a great name.  'Eligibility' for a research subject means\
-          \ something very specific and so I don't think i'd want to name the 'qualifed'\
-          \ / 'disqualified' status for that entity as 'eligibility_status'\n\nSE:\
-          \ this is really a relational status. In other words, the specimen is disqualified\
-          \ in a study, not just disqualified on its own. So, if we want to accomodate\
-          \ a database that will eventually have entries where the same specimen is\
-          \ used in more than one study but still be able to capture which study disqualifies\
-          \ it and why, we'll need to make this a \"qualified relationship\"\n\nMHB:\
-          \ Agreed. I think the context of the present associated study is implied\
-          \ here (and it was clarified that a given specimen is only associated with\
-          \ one study in th GDC/PDC/ICDC). But we should address this in the next\
-          \ phase. "
-        - 'Cardinality: 0..1'
-        comments:
-        - This is the first of several 'flag' type properties we define to capture
-          admistrative or experimental roles/status associated with a specimen.  We
-          may ultimately define a container strucutre to accommodate all flags, where
-          the meaning of the flag is captured in the data (as values of a single 'flag_type'
-          attribute) instead of in the model (as separate attributes for each type
-          of flag)
-        multivalued: false
-        required: false
-      reference_status_flag:
-        name: reference_status_flag
-        description: A flag indicating whether the specimen is used as a reference
-          during analytical interrogation
-        notes:
-        - 'MHB: Not sure about how I modeled this one.  Also, consider collapsing
-          with ''eliqibility_flag'' , and any other status/role related elements,
-          into a single property with a  generic data type that can capture any type
-          of status or role.
-
-
-          BTF: as with ''status'' above, there is a similar attribute in ADM.Case
-          which i left named ''is_reference'' for lack of imagination.
-
-
-          SE: same thought as above but probably too much change to consider for this
-          cycle. This field and similar ones are really not an attribute of a single
-          entity. It''s a "relational fact" that involves multiple entity instances
-          and the fact itself holds some attributes. Saying this in plain English
-          makes this clear. For example, this can be worded as "Study x uses specimen
-          y and uses specimen z as a reference". So one option is to figure out how
-          to reduce this to a simple property and this is doable if we put more meaning
-          on the instance of x and y. If we say that we''ll have an instance of y
-          for every study the real thing behind y (the real world specimen), i.e.
-          y stands for the role of the real specimen in the specific study, then we
-          can have a simle property on that instance to say it is a reference because
-          that property is specific to y''s role in that study, not the real y entity
-          in the world. We haven''t talked much about the meaning of the instances
-          of our entities, i.e. when should they be instantiated and what does the
-          instance stand for in the data, so it''s hard to decide on how to model
-          attriburtes. Just thinking out loud here but some of our difficulties are
-          due to not also thinking at the instance level.'
-        - 'Cardinality: 0..1'
-        multivalued: false
-        required: false
-      matched_normal_flag:
-        name: matched_normal_flag
-        description: A flag indicating that there is no matched normal aliquot for
-          this case that can be used for variant calling purposes.
-        notes:
-        - 'Cardinality: 0..m'
-        comments:
-        - 'This attribute comes from GDC, where it is specific to ''aliquot'' specimens.
-          If we leave this as a separate attribute with an enum data type, values
-          will have to indicate whether the variant calling strategy is for targeted,
-          whole genome, or exome sequencing (e.g. "no matched normal wgs"). But as
-          noted above we may ultimately group with with other ''flag''-like attributes
-          into a common structure, where we can deal with this issue. '
-        multivalued: true
-        required: false
-      selected_normal_flag:
-        name: selected_normal_flag
-        description: A flag to denote which 'normal' aliquot the submitter prefers
-          to use for variant calling. Only one normal per experimental strategy per
-          case can be selected.
-        notes:
-        - 'Cardinality: 0..1'
-        comments:
-        - Same comment/issue as for matched_normal_flag above
-        multivalued: false
-        required: false
-      paired_specimen_genotype_match_flag:
-        name: paired_specimen_genotype_match_flag
-        description: A flag to indicate whether the genotype of the paired normal
-          or tumor specimen matches, or if the data is not available.
-        notes:
-        - 'Cardinality: 0..1'
-        multivalued: false
-        required: false
       section_location:
         name: section_location
         description: The location in a parent specimen from which a section/portion
@@ -734,7 +634,13 @@ classes:
         notes:
         - 'MHB: Consider cardinality on this field . . . if the Activity here represents
           the entire creation process, which may involve many sub-activities and apply
-          many methods, should cardinality be 0..m?'
+          many methods, should cardinality be 0..m?
+
+          MHB: HTAN now has additional fields to capture methods used in deriving
+          new specimens from a parent specimen - e.g. Method of Nucleic Acid Isolation
+          (creation of an analyte), slicing method (creation of a portion?). Need
+          richer model here -  separate fields?  or complex data type for capturing
+          method type where we can incude the subcategory of method?'
         - 'Cardinality: 0..1'
         comments:
         - This attribute specifically captures the method of collection from the original
@@ -819,7 +725,11 @@ classes:
         description: A specific visit during which the specimen was collected.
         notes:
         - 'MHB: Consider if we could make this a mroe generic/re-usable property like
-          ''partOf'', or ''performedDuring'''
+          ''partOf'', or ''performedDuring''
+
+          MHB: or, consider lumping during_visit with relative_timing - and creating
+          a datatype here that can include a type value referencing a instance (e.g.
+          an instance of a visit), or a coding.'
         - 'Cardinality: 0..1'
         comments:
         - '*Modeling of ''Visit'' is not in scope for this phase, but is a likely

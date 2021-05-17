@@ -154,11 +154,6 @@ linkml:Nodeidentifier NONLITERAL
           <related_document?_related_report?> @linkml:String * ;
           <related_specimen> @linkml:String * ;
           <derived_product> @linkml:String * ;
-          <qualification_status_flag> @linkml:String ? ;
-          <reference_status_flag> @linkml:String ? ;
-          <matched_normal_flag> @linkml:String * ;
-          <selected_normal_flag> @linkml:String ? ;
-          <paired_specimen_genotype_match_flag> @linkml:String ? ;
           <section_location> @linkml:String ?
        ) ;
        rdf:type [ <CDM.Specimen> ] ?

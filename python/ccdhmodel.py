@@ -1,5 +1,5 @@
 # Auto generated from ccdhmodel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-05-13 18:22
+# Generation date: 2021-05-17 13:30
 # Schema: CRDC-H
 #
 # id: https://example.org/ccdh
@@ -9,20 +9,19 @@
 import dataclasses
 import sys
 import re
-from jsonasobj2 import JsonObj
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
-from linkml_runtime.linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
+from linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
 
-from linkml_runtime.utils.slot import Slot
-from linkml_runtime.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml_runtime.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
-from linkml_runtime.utils.enumerations import EnumDefinitionImpl
+from linkml.utils.slot import Slot
+from linkml.utils.metamodelcore import empty_list, empty_dict, bnode
+from linkml.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
+from linkml.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml.utils.formatutils import camelcase, underscore, sfx
+from linkml.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
-from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import String
+from linkml.utils.curienamespace import CurieNamespace
+from linkml_model.types import String
 
 metamodel_version = "1.7.0"
 
@@ -83,17 +82,14 @@ class CDM.Specimen(YAMLRoot):
     related_document?_related_report?: Optional[Union[str, List[str]]] = empty_list()
     related_specimen: Optional[Union[str, List[str]]] = empty_list()
     derived_product: Optional[Union[str, List[str]]] = empty_list()
-    qualification_status_flag: Optional[str] = None
-    reference_status_flag: Optional[str] = None
-    matched_normal_flag: Optional[Union[str, List[str]]] = empty_list()
-    selected_normal_flag: Optional[str] = None
-    paired_specimen_genotype_match_flag: Optional[str] = None
     section_location: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is not None and not isinstance(self.id, str):
             self.id = str(self.id)
 
+        if self.identifier is None:
+            self.identifier = []
         if not isinstance(self.identifier, list):
             self.identifier = [self.identifier]
         self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
@@ -116,6 +112,8 @@ class CDM.Specimen(YAMLRoot):
         if self.source_material_type is not None and not isinstance(self.source_material_type, str):
             self.source_material_type = str(self.source_material_type)
 
+        if self.parent_specimen is None:
+            self.parent_specimen = []
         if not isinstance(self.parent_specimen, list):
             self.parent_specimen = [self.parent_specimen]
         self.parent_specimen = [v if isinstance(v, str) else str(v) for v in self.parent_specimen]
@@ -129,6 +127,8 @@ class CDM.Specimen(YAMLRoot):
         if self.condition_status_at_collection is not None and not isinstance(self.condition_status_at_collection, str):
             self.condition_status_at_collection = str(self.condition_status_at_collection)
 
+        if self.related_diagnosis is None:
+            self.related_diagnosis = []
         if not isinstance(self.related_diagnosis, list):
             self.related_diagnosis = [self.related_diagnosis]
         self.related_diagnosis = [v if isinstance(v, str) else str(v) for v in self.related_diagnosis]
@@ -136,6 +136,8 @@ class CDM.Specimen(YAMLRoot):
         if self.creation_activity is not None and not isinstance(self.creation_activity, str):
             self.creation_activity = str(self.creation_activity)
 
+        if self.processing_activity is None:
+            self.processing_activity = []
         if not isinstance(self.processing_activity, list):
             self.processing_activity = [self.processing_activity]
         self.processing_activity = [v if isinstance(v, str) else str(v) for v in self.processing_activity]
@@ -152,10 +154,14 @@ class CDM.Specimen(YAMLRoot):
         if self.dimensional_measure is not None and not isinstance(self.dimensional_measure, str):
             self.dimensional_measure = str(self.dimensional_measure)
 
+        if self.quantity_measure is None:
+            self.quantity_measure = []
         if not isinstance(self.quantity_measure, list):
             self.quantity_measure = [self.quantity_measure]
         self.quantity_measure = [v if isinstance(v, str) else str(v) for v in self.quantity_measure]
 
+        if self.quality_measure is None:
+            self.quality_measure = []
         if not isinstance(self.quality_measure, list):
             self.quality_measure = [self.quality_measure]
         self.quality_measure = [v if isinstance(v, str) else str(v) for v in self.quality_measure]
@@ -163,10 +169,14 @@ class CDM.Specimen(YAMLRoot):
         if self.cellular_composition_type is not None and not isinstance(self.cellular_composition_type, str):
             self.cellular_composition_type = str(self.cellular_composition_type)
 
+        if self.cellular_composition_measure is None:
+            self.cellular_composition_measure = []
         if not isinstance(self.cellular_composition_measure, list):
             self.cellular_composition_measure = [self.cellular_composition_measure]
         self.cellular_composition_measure = [v if isinstance(v, str) else str(v) for v in self.cellular_composition_measure]
 
+        if self.tissue_composition_measure is None:
+            self.tissue_composition_measure = []
         if not isinstance(self.tissue_composition_measure, list):
             self.tissue_composition_measure = [self.tissue_composition_measure]
         self.tissue_composition_measure = [v if isinstance(v, str) else str(v) for v in self.tissue_composition_measure]
@@ -177,33 +187,23 @@ class CDM.Specimen(YAMLRoot):
         if self.specific_tissue_morphology is not None and not isinstance(self.specific_tissue_morphology, str):
             self.specific_tissue_morphology = str(self.specific_tissue_morphology)
 
+        if self.related_document?_related_report? is None:
+            self.related_document?_related_report? = []
         if not isinstance(self.related_document?_related_report?, list):
             self.related_document?_related_report? = [self.related_document?_related_report?]
         self.related_document?_related_report? = [v if isinstance(v, str) else str(v) for v in self.related_document?_related_report?]
 
+        if self.related_specimen is None:
+            self.related_specimen = []
         if not isinstance(self.related_specimen, list):
             self.related_specimen = [self.related_specimen]
         self.related_specimen = [v if isinstance(v, str) else str(v) for v in self.related_specimen]
 
+        if self.derived_product is None:
+            self.derived_product = []
         if not isinstance(self.derived_product, list):
             self.derived_product = [self.derived_product]
         self.derived_product = [v if isinstance(v, str) else str(v) for v in self.derived_product]
-
-        if self.qualification_status_flag is not None and not isinstance(self.qualification_status_flag, str):
-            self.qualification_status_flag = str(self.qualification_status_flag)
-
-        if self.reference_status_flag is not None and not isinstance(self.reference_status_flag, str):
-            self.reference_status_flag = str(self.reference_status_flag)
-
-        if not isinstance(self.matched_normal_flag, list):
-            self.matched_normal_flag = [self.matched_normal_flag]
-        self.matched_normal_flag = [v if isinstance(v, str) else str(v) for v in self.matched_normal_flag]
-
-        if self.selected_normal_flag is not None and not isinstance(self.selected_normal_flag, str):
-            self.selected_normal_flag = str(self.selected_normal_flag)
-
-        if self.paired_specimen_genotype_match_flag is not None and not isinstance(self.paired_specimen_genotype_match_flag, str):
-            self.paired_specimen_genotype_match_flag = str(self.paired_specimen_genotype_match_flag)
 
         if self.section_location is not None and not isinstance(self.section_location, str):
             self.section_location = str(self.section_location)
@@ -262,6 +262,8 @@ class CDM.SpecimenCreationActivity(YAMLRoot):
         if self.collection_site is not None and not isinstance(self.collection_site, str):
             self.collection_site = str(self.collection_site)
 
+        if self.input_specimen is None:
+            self.input_specimen = []
         if not isinstance(self.input_specimen, list):
             self.input_specimen = [self.input_specimen]
         self.input_specimen = [v if isinstance(v, str) else str(v) for v in self.input_specimen]
@@ -269,6 +271,8 @@ class CDM.SpecimenCreationActivity(YAMLRoot):
         if self.quantity_collected is not None and not isinstance(self.quantity_collected, str):
             self.quantity_collected = str(self.quantity_collected)
 
+        if self.execution_condition is None:
+            self.execution_condition = []
         if not isinstance(self.execution_condition, list):
             self.execution_condition = [self.execution_condition]
         self.execution_condition = [v if isinstance(v, str) else str(v) for v in self.execution_condition]
@@ -276,6 +280,8 @@ class CDM.SpecimenCreationActivity(YAMLRoot):
         if self.collected_during_visit is not None and not isinstance(self.collected_during_visit, str):
             self.collected_during_visit = str(self.collected_during_visit)
 
+        if self.relative_timing is None:
+            self.relative_timing = []
         if not isinstance(self.relative_timing, list):
             self.relative_timing = [self.relative_timing]
         self.relative_timing = [v if isinstance(v, str) else str(v) for v in self.relative_timing]
@@ -299,6 +305,8 @@ class CDM.SpecimenProcessingActivity(YAMLRoot):
     performed_by: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.duration is None:
+            self.duration = []
         if not isinstance(self.duration, list):
             self.duration = [self.duration]
         self.duration = [v if isinstance(v, str) else str(v) for v in self.duration]
@@ -362,6 +370,8 @@ class CDM.SpecimenTransportActivity(YAMLRoot):
         if self.transport_destination is not None and not isinstance(self.transport_destination, str):
             self.transport_destination = str(self.transport_destination)
 
+        if self.execution_conditions is None:
+            self.execution_conditions = []
         if not isinstance(self.execution_conditions, list):
             self.execution_conditions = [self.execution_conditions]
         self.execution_conditions = [v if isinstance(v, str) else str(v) for v in self.execution_conditions]
@@ -385,18 +395,26 @@ class CDM.SpecimenContainer(YAMLRoot):
     charge_type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.container_type is None:
+            self.container_type = []
         if not isinstance(self.container_type, list):
             self.container_type = [self.container_type]
         self.container_type = [v if isinstance(v, str) else str(v) for v in self.container_type]
 
+        if self.container_number is None:
+            self.container_number = []
         if not isinstance(self.container_number, list):
             self.container_number = [self.container_number]
         self.container_number = [v if isinstance(v, str) else str(v) for v in self.container_number]
 
+        if self.additive is None:
+            self.additive = []
         if not isinstance(self.additive, list):
             self.additive = [self.additive]
         self.additive = [v if isinstance(v, str) else str(v) for v in self.additive]
 
+        if self.parent_container is None:
+            self.parent_container = []
         if not isinstance(self.parent_container, list):
             self.parent_container = [self.parent_container]
         self.parent_container = [v if isinstance(v, str) else str(v) for v in self.parent_container]
@@ -436,10 +454,14 @@ class CDM.BiologicallyDerivedProduct(YAMLRoot):
         if self.product_type is not None and not isinstance(self.product_type, str):
             self.product_type = str(self.product_type)
 
+        if self.passage_number is None:
+            self.passage_number = []
         if not isinstance(self.passage_number, list):
             self.passage_number = [self.passage_number]
         self.passage_number = [v if isinstance(v, str) else str(v) for v in self.passage_number]
 
+        if self.growth_rate is None:
+            self.growth_rate = []
         if not isinstance(self.growth_rate, list):
             self.growth_rate = [self.growth_rate]
         self.growth_rate = [v if isinstance(v, str) else str(v) for v in self.growth_rate]
@@ -467,11 +489,13 @@ class CDM.Patient(YAMLRoot):
     adverse_events: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
+        if self.id is None:
             raise ValueError("id must be supplied")
         if not isinstance(self.id, str):
             self.id = str(self.id)
 
+        if self.identifier is None:
+            self.identifier = []
         if not isinstance(self.identifier, list):
             self.identifier = [self.identifier]
         self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
@@ -482,6 +506,8 @@ class CDM.Patient(YAMLRoot):
         if self.taxon is not None and not isinstance(self.taxon, str):
             self.taxon = str(self.taxon)
 
+        if self.adverse_events is None:
+            self.adverse_events = []
         if not isinstance(self.adverse_events, list):
             self.adverse_events = [self.adverse_events]
         self.adverse_events = [v if isinstance(v, str) else str(v) for v in self.adverse_events]
@@ -521,16 +547,18 @@ class CDM.ResearchSubject(YAMLRoot):
     study_progress: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
+        if self.id is None:
             raise ValueError("id must be supplied")
         if not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self._is_empty(self.associated_patient):
+        if self.associated_patient is None:
             raise ValueError("associated_patient must be supplied")
         if not isinstance(self.associated_patient, str):
             self.associated_patient = str(self.associated_patient)
 
+        if self.identifier is None:
+            self.identifier = []
         if not isinstance(self.identifier, list):
             self.identifier = [self.identifier]
         self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
@@ -547,14 +575,20 @@ class CDM.ResearchSubject(YAMLRoot):
         if self.qualification_status_flag is not None and not isinstance(self.qualification_status_flag, str):
             self.qualification_status_flag = str(self.qualification_status_flag)
 
+        if self.associated_project is None:
+            self.associated_project = []
         if not isinstance(self.associated_project, list):
             self.associated_project = [self.associated_project]
         self.associated_project = [v if isinstance(v, str) else str(v) for v in self.associated_project]
 
+        if self.member_of_cohort is None:
+            self.member_of_cohort = []
         if not isinstance(self.member_of_cohort, list):
             self.member_of_cohort = [self.member_of_cohort]
         self.member_of_cohort = [v if isinstance(v, str) else str(v) for v in self.member_of_cohort]
 
+        if self.member_of_study is None:
+            self.member_of_study = []
         if not isinstance(self.member_of_study, list):
             self.member_of_study = [self.member_of_study]
         self.member_of_study = [v if isinstance(v, str) else str(v) for v in self.member_of_study]
@@ -571,6 +605,8 @@ class CDM.ResearchSubject(YAMLRoot):
         if self.originating_site is not None and not isinstance(self.originating_site, str):
             self.originating_site = str(self.originating_site)
 
+        if self.study_progress is None:
+            self.study_progress = []
         if not isinstance(self.study_progress, list):
             self.study_progress = [self.study_progress]
         self.study_progress = [v if isinstance(v, str) else str(v) for v in self.study_progress]
@@ -611,7 +647,7 @@ class CDM.ResearchProject(YAMLRoot):
     date_iacuc_approval: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.research_project_type):
+        if self.research_project_type is None:
             raise ValueError("research_project_type must be supplied")
         if not isinstance(self.research_project_type, str):
             self.research_project_type = str(self.research_project_type)
@@ -619,6 +655,8 @@ class CDM.ResearchProject(YAMLRoot):
         if self.id is not None and not isinstance(self.id, str):
             self.id = str(self.id)
 
+        if self.identifier is None:
+            self.identifier = []
         if not isinstance(self.identifier, list):
             self.identifier = [self.identifier]
         self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
@@ -635,6 +673,8 @@ class CDM.ResearchProject(YAMLRoot):
         if self.description_shortened is not None and not isinstance(self.description_shortened, str):
             self.description_shortened = str(self.description_shortened)
 
+        if self.sponsor is None:
+            self.sponsor = []
         if not isinstance(self.sponsor, list):
             self.sponsor = [self.sponsor]
         self.sponsor = [v if isinstance(v, str) else str(v) for v in self.sponsor]
@@ -645,14 +685,20 @@ class CDM.ResearchProject(YAMLRoot):
         if self.date_ended is not None and not isinstance(self.date_ended, str):
             self.date_ended = str(self.date_ended)
 
+        if self.primary_anatomic_site is None:
+            self.primary_anatomic_site = []
         if not isinstance(self.primary_anatomic_site, list):
             self.primary_anatomic_site = [self.primary_anatomic_site]
         self.primary_anatomic_site = [v if isinstance(v, str) else str(v) for v in self.primary_anatomic_site]
 
+        if self.url is None:
+            self.url = []
         if not isinstance(self.url, list):
             self.url = [self.url]
         self.url = [v if isinstance(v, str) else str(v) for v in self.url]
 
+        if self.part_of is None:
+            self.part_of = []
         if not isinstance(self.part_of, list):
             self.part_of = [self.part_of]
         self.part_of = [v if isinstance(v, str) else str(v) for v in self.part_of]
@@ -683,16 +729,18 @@ class CDM.Organization(YAMLRoot):
     organization_type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
+        if self.id is None:
             raise ValueError("id must be supplied")
         if not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self._is_empty(self.name):
+        if self.name is None:
             raise ValueError("name must be supplied")
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
+        if self.identifier is None:
+            self.identifier = []
         if not isinstance(self.identifier, list):
             self.identifier = [self.identifier]
         self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
@@ -727,11 +775,13 @@ class CDM.Exposure(YAMLRoot):
     related_patient: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
+        if self.id is None:
             raise ValueError("id must be supplied")
         if not isinstance(self.id, str):
             self.id = str(self.id)
 
+        if self.identifier is None:
+            self.identifier = []
         if not isinstance(self.identifier, list):
             self.identifier = [self.identifier]
         self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
@@ -742,6 +792,8 @@ class CDM.Exposure(YAMLRoot):
         if self.alcohol_use is not None and not isinstance(self.alcohol_use, str):
             self.alcohol_use = str(self.alcohol_use)
 
+        if self.environmental is None:
+            self.environmental = []
         if not isinstance(self.environmental, list):
             self.environmental = [self.environmental]
         self.environmental = [v if isinstance(v, str) else str(v) for v in self.environmental]
@@ -863,21 +915,6 @@ slots.cDM.Specimen__related_specimen = Slot(uri=CCDH.related_specimen, name="cDM
 
 slots.cDM.Specimen__derived_product = Slot(uri=CCDH.derived_product, name="cDM.Specimen__derived_product", curie=CCDH.curie('derived_product'),
                    model_uri=CCDH['cDM.Specimen__derived_product'], domain=None, range=Optional[Union[str, List[str]]])
-
-slots.cDM.Specimen__qualification_status_flag = Slot(uri=CCDH.qualification_status_flag, name="cDM.Specimen__qualification_status_flag", curie=CCDH.curie('qualification_status_flag'),
-                   model_uri=CCDH['cDM.Specimen__qualification_status_flag'], domain=None, range=Optional[str])
-
-slots.cDM.Specimen__reference_status_flag = Slot(uri=CCDH.reference_status_flag, name="cDM.Specimen__reference_status_flag", curie=CCDH.curie('reference_status_flag'),
-                   model_uri=CCDH['cDM.Specimen__reference_status_flag'], domain=None, range=Optional[str])
-
-slots.cDM.Specimen__matched_normal_flag = Slot(uri=CCDH.matched_normal_flag, name="cDM.Specimen__matched_normal_flag", curie=CCDH.curie('matched_normal_flag'),
-                   model_uri=CCDH['cDM.Specimen__matched_normal_flag'], domain=None, range=Optional[Union[str, List[str]]])
-
-slots.cDM.Specimen__selected_normal_flag = Slot(uri=CCDH.selected_normal_flag, name="cDM.Specimen__selected_normal_flag", curie=CCDH.curie('selected_normal_flag'),
-                   model_uri=CCDH['cDM.Specimen__selected_normal_flag'], domain=None, range=Optional[str])
-
-slots.cDM.Specimen__paired_specimen_genotype_match_flag = Slot(uri=CCDH.paired_specimen_genotype_match_flag, name="cDM.Specimen__paired_specimen_genotype_match_flag", curie=CCDH.curie('paired_specimen_genotype_match_flag'),
-                   model_uri=CCDH['cDM.Specimen__paired_specimen_genotype_match_flag'], domain=None, range=Optional[str])
 
 slots.cDM.Specimen__section_location = Slot(uri=CCDH.section_location, name="cDM.Specimen__section_location", curie=CCDH.curie('section_location'),
                    model_uri=CCDH['cDM.Specimen__section_location'], domain=None, range=Optional[str])
