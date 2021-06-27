@@ -28,8 +28,6 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-test: all
-
 install:
 	pipenv install	
 
@@ -128,3 +126,7 @@ gh-deploy:
 # Regenerate from Google Sheets
 regen-google-sheets:
 	cd generators/google-sheets && pipenv run python sheet2linkml.py && cp output/CDM_Dictionary_v1_Active.yaml ../../src/schema/ccdhmodel.yaml && cd -
+
+# For a test, clean the products, regenerate the schema from the Google Sheet,
+# and then build all the artifacts.
+test: clean regen-google-sheets all
